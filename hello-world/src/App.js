@@ -1,30 +1,28 @@
-import React, { Component } from 'react';
+import React, {Component} from "react";
 
 class App extends Component {
-  render() {
-    const date = new Date();
-    const hours = date.getHours();
-    let timeOfDay;
-
-    // inline styling
-    const styles = {
-      color: "#FF8C00",
+  constructor() {
+    super();
+    this.state = {
+      count: 0,
     };
-    
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-    if (hours < 12) {
-      timeOfDay = "morning";
-      styles.color = "#04756F";
-    } else if (hours >= 12 && hours < 17) {
-      timeOfDay = "afternoon";
-      styles.color = "#2E0927";
-    } else {
-      timeOfDay = "night";
-      styles.color = "#D90000";
-    }
+  handleClick() {
+    this.setState(prevState => {
+      return {
+        count: prevState.count + 1,
+      };
+    });
+  }
 
+  render() {
     return (
-      <h1 style={styles}>Good {timeOfDay}!</h1>
+      <div>
+        <h1>{this.state.count}</h1>
+        <button onClick={this.handleClick}>Change!</button>
+      </div>
     );
   }
 }
