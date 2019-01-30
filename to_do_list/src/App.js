@@ -17,9 +17,9 @@ class App extends Component {
         if (todo.id === id) {
           todo.completed = !todo.completed;
         }
-
         return todo;
       });
+      
       return {
         todos: updatedToDos
       };
